@@ -1,0 +1,89 @@
+<script>
+    let playerScore = 0
+    let compScore = 0
+    let roundsPlayed = 0
+
+    function computerPlay() {
+        let options = ["Rock", "Paper", "Scissors"]
+        return options[Math.floor(Math.random()*3)]
+    }
+
+    function playRound(computerChoice, playerChoice) {
+        let playerChoice = playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1).toLowerCase()
+        let win = ""
+
+        if (compChoice == "Rock") {
+            if (playerChoice == "Paper") {
+                win = "Player"
+            }
+            if (playerChoice == "Scissors") {
+                win = "Comp"
+            }
+            else {
+                win = "null"
+            }
+        }
+        if (compChoice == "Paper") {
+            if (playerChoice == "Rock") {
+                win = "Comp"
+            }
+            if (playerChoice = "Scissors") {
+                win = "Player"
+            }
+            else {
+                win = "null"
+            }
+        }
+        else {
+            if (playerChoice == "Rock") {
+                win = "Player"
+            }
+            if (playerChoice == "Paper") {
+                win = "Comp"
+            }
+            else {
+                win = "null"
+            }
+        }
+
+        if (win == "Player") {
+            playerScore += 1
+            console.log("You win! " + playerChoice + " beats " + compChoice + "!")
+        }
+        if (win == "Comp") {
+            compScore += 1
+            console.log("You lose! " + compChoice + " beats " + playerChoice + "!")
+        }
+        else {
+            console.log("It's a tie!")
+        }
+
+        roundsPlayed += 1
+    }
+
+    function winner() {
+        if (playerScore > compScore) {
+            console.log("You win! Final Score: " + playerScore + "-" + compScore)
+        }
+        if (compScore > playerScore) {
+            console.log("You lose! Final Score: " + playerScore + "-" + compScore)
+        }
+        else {
+            console.log("It's a tie! Final Score: " + playerScore + "-" + compScore)
+        }
+    }
+
+    function game() {
+        console.log("Welcome to the game! Five rounds to win!")
+
+        while (roundsPlayed < 5) {
+            let player = Window.prompt("Rock, Paper, or Scissors?")
+
+            playRound(computerPlay(), player)
+        }
+
+        winner()
+    }
+
+    game()
+</script>
